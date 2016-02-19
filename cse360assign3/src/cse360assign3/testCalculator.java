@@ -105,7 +105,12 @@ public class testCalculator {
 	public void testGetHistory() {
 		Calculator testCalc = new Calculator();
 		
-		assertEquals("", testCalc.getHistory());
+		testCalc.add(4);
+		testCalc.subtract(2);
+		testCalc.multiply(2);
+		testCalc.add(5);
+		
+		assertEquals("0 + 4 - 2 * 2 + 5", testCalc.getHistory());
 	}
 
 }
