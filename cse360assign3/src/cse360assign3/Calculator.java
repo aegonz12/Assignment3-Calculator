@@ -2,7 +2,7 @@
 package cse360assign3;
 
 /**
- * Calculator class contains several methods for performing arithmetic and retrieving the history of calculations.
+ * Calculator class contains several methods for performing integer arithmetic and retrieving the history of calculations.
  * @author Anthony Gonzalez
  * @version Version 1: February 19, 2016
  */
@@ -22,7 +22,7 @@ public class Calculator {
 	 * @return An integer containing the total value for the current calculation.
 	 */
 	public int getTotal () {
-		return 0;
+		return total;
 	}
 	
 	/**
@@ -30,7 +30,7 @@ public class Calculator {
 	 * @param value The value to add to the total.
 	 */
 	public void add (int value) {
-		
+		total += value;
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class Calculator {
 	 * @param value The value to subtract from the total.
 	 */
 	public void subtract (int value) {
-		
+		total -= value;
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class Calculator {
 	 * @param value The value to multiply the total by.
 	 */
 	public void multiply (int value) {
-		
+		total *= value;
 	}
 	
 	/**
@@ -54,7 +54,11 @@ public class Calculator {
 	 * @param value The value to divide the total by.
 	 */
 	public void divide (int value) {
-		
+		if(value == 0){
+			total = 0;
+		}else{
+			total /= value;
+		}
 	}
 	
 	/**
