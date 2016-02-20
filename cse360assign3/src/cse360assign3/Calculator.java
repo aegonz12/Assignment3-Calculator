@@ -4,7 +4,7 @@ package cse360assign3;
 /**
  * Calculator class contains several methods for performing integer arithmetic and retrieving the history of calculations.
  * @author Anthony Gonzalez
- * @version Version 1: February 19, 2016
+ * @version Version 4: February 20, 2016
  */
 public class Calculator {
 
@@ -33,7 +33,7 @@ public class Calculator {
 	public void add (int value) {
 		total += value;
 		
-		history += " + " + value;
+		history += " + " + value;	//update history string
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class Calculator {
 	public void subtract (int value) {
 		total -= value;
 		
-		history += " - " + value;
+		history += " - " + value;	//update history string
 	}
 	
 	/**
@@ -53,22 +53,22 @@ public class Calculator {
 	public void multiply (int value) {
 		total *= value;
 		
-		history += " * " + value;
+		history += " * " + value;	//update history string
 	}
 	
 	/**
-	 * Performs division on the total.
+	 * Performs division on the total. Division by 0 sets the calculation total to 0.
 	 * @param value The value to divide the total by.
 	 */
 	public void divide (int value) {
 		if(value == 0){
 			total = 0;
 			
-			history += " / " + 0;
+			history += " / " + 0;		//update history string for case of value = 0
 		}else{
 			total /= value;
 			
-			history += " / " + value;
+			history += " / " + value;	//update history string for case of value != 0
 		}
 	}
 	

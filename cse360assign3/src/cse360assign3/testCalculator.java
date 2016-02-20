@@ -41,6 +41,7 @@ public class testCalculator {
 		assertEquals(12, testCalc.getTotal());
 	}
 
+	//Subtracts a single value from the total
 	@Test
 	public void testSubtract() {
 		Calculator testCalc = new Calculator();
@@ -49,6 +50,7 @@ public class testCalculator {
 		assertEquals(-5, testCalc.getTotal());
 	}
 	
+	//Subtracts multiple values from the total in succession
 	@Test
 	public void testSubtract_multipleSubtractions() {
 		Calculator testCalc = new Calculator();
@@ -60,6 +62,7 @@ public class testCalculator {
 		assertEquals(-4, testCalc.getTotal());
 	}
 
+	//Multiplies the default total, 0, by a single value
 	@Test
 	public void testMultiply_initialMultiply() {
 		Calculator testCalc = new Calculator();
@@ -68,15 +71,17 @@ public class testCalculator {
 		assertEquals(0, testCalc.getTotal());
 	}
 	
+	//Changes the default value of total, and multiplies by a single value
 	@Test
 	public void testMultiply_afterAddingValue() {
 		Calculator testCalc = new Calculator();
 		
-		testCalc.add(1);
+		testCalc.add(2);
 		testCalc.multiply(5);
-		assertEquals(5, testCalc.getTotal());
+		assertEquals(10, testCalc.getTotal());
 	}
 
+	//Divides the initial value of total by a single value
 	@Test
 	public void testDivide_initialDivide() {
 		Calculator testCalc = new Calculator();
@@ -85,6 +90,7 @@ public class testCalculator {
 		assertEquals(0, testCalc.getTotal());
 	}
 	
+	//Changes the default value of total, and divides by a single value
 	public void testDivide_afterAddingValue() {
 		Calculator testCalc = new Calculator();
 		
@@ -93,14 +99,27 @@ public class testCalculator {
 		assertEquals(1, testCalc.getTotal());
 	}
 	
+	//Divides the default value of total by zero, ensuring there is no error
 	@Test
-	public void testDivide_divideByZero() {
+	public void testDivide_initialDivideByZero() {
 		Calculator testCalc = new Calculator();
 		
 		testCalc.divide(0);
 		assertEquals(0, testCalc.getTotal());
 	}
 
+	//Changes the default value of total, then divides by 0.
+	//Expects value of 0.
+	@Test
+	public void testDivide_DivideByZero() {
+		Calculator testCalc = new Calculator();
+		
+		testCalc.add(25);
+		testCalc.divide(0);
+		assertEquals(0, testCalc.getTotal());
+	}
+	
+	//Manipulates the total in several ways and checks the returned history string
 	@Test
 	public void testGetHistory() {
 		Calculator testCalc = new Calculator();
@@ -111,6 +130,23 @@ public class testCalculator {
 		testCalc.add(5);
 		
 		assertEquals("0 + 4 - 2 * 2 + 5", testCalc.getHistory());
+	}
+	
+	//Manipulates the total is several ways, with the specific inclusion of dividing by 0,
+	//and checks the returned history string
+	@Test
+	public void testGetHistory_withDivideByZero() {
+		Calculator testCalc = new Calculator();
+		
+		testCalc.add(40);
+		testCalc.subtract(2);
+		testCalc.multiply(2);
+		testCalc.add(5);
+		testCalc.divide(2);
+		
+		testCalc.divide(0);
+		
+		assertEquals("0 + 40 - 2 * 2 + 5 / 2 / 0", testCalc.getHistory());
 	}
 
 }
